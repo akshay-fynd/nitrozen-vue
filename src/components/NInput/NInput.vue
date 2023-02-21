@@ -96,6 +96,15 @@
         <span v-else>{{ suffix }}</span>
       </nitrozen-input-suffix>
     </div>
+    <div v-if="helperText" class="n-input-underinfo">
+      <span class="n-helper-text">{{ helperText }}</span>
+      <nitrozen-validation
+        v-if="validationState"
+        :isHidden="validationState ? false : true"
+        :validationState="validationState"
+        :label="validationMessage"
+      ></nitrozen-validation>
+    </div>
   </div>
 </template>
 
@@ -105,6 +114,7 @@ import NInputSuffix from './NInputSuffix';
 import NTooltip from './../NTooltip';
 import NitrozenInline from './../NInline';
 import NitrozenUuid from './../../utils/NUuid';
+import NitrozenValidation from './../NValidation';
 
 export default {
   name: 'nitrozen-input',
@@ -113,6 +123,7 @@ export default {
     'nitrozen-input-suffix': NInputSuffix,
     'nitrozen-tooltip': NTooltip,
     'nitrozen-inline': NitrozenInline,
+    'nitrozen-validation': NitrozenValidation,
   },
   data() {
     return {
@@ -120,7 +131,7 @@ export default {
     };
   },
   computed: {
-    length: function() {
+    length: function () {
       return this.value.length;
     },
   },
@@ -153,11 +164,15 @@ export default {
       type: [Number, String],
       default: '',
     },
-    showError: {
-      type: Boolean,
-      default: false,
+    validationState: {
+      type: String,
+      default: null,
     },
-    hint: {
+    validationMessage: {
+      type: String,
+      default: null,
+    },
+    helperText: {
       type: String,
       default: '',
     },
@@ -228,7 +243,7 @@ export default {
     }
   },
   methods: {
-    valueChange: function(event) {
+    valueChange: function (event) {
       let value = event.target.value;
       if (this.type === 'number') {
         value = Number(event.target.value);
@@ -240,7 +255,7 @@ export default {
         this.loaderShow = true;
       }
     },
-    eventEmit: function(event, type) {
+    eventEmit: function (event, type) {
       this.$emit(type, event);
     },
   },
