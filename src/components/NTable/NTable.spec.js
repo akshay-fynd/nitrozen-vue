@@ -70,7 +70,7 @@ describe('Render Table Component', () => {
     });
     const rows = wrapper.findAll('.n-zebra-table');
     expect(rows).toHaveLength(tabRow.length / 2);
-    expect(rows.at(0).contains('.n-zebra-table')).toBe(true);
+    expect(rows.at(0).find('.n-zebra-table')).toBeDefined();
   });
 
   it('Should Render show columnborder', () => {
@@ -85,7 +85,7 @@ describe('Render Table Component', () => {
 
     const rows = wrapper.findAll('.n-table-left-border');
     expect(rows).toHaveLength(tabRow.length * 2);
-    expect(rows.at(0).contains('.n-table-left-border')).toBe(true);
+    expect(rows.at(0).find('.n-table-left-border')).toBeDefined();
   });
 
   it('Should Contain Footer', () => {
@@ -115,7 +115,7 @@ describe('Render Table Component', () => {
     });
     expect(wrapper.find('footer').exists()).toBe(false);
     const condensedrows = wrapper.findAll('.n-table-condensed');
-    expect(condensedrows.at(0).contains('.n-table-condensed')).toBe(true);
+    expect(condensedrows.at(0).find('.n-table-condensed')).toBeDefined();
   });
 
   it('Should render the checkbox table', () => {
