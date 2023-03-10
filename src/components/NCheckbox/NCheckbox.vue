@@ -68,7 +68,7 @@ export default {
     name: { type: String, default: '' },
     state: {
       type: String,
-      default: '',
+      default: 'default',
       validator(value) {
         return ['success', 'error', 'warning', 'default'].includes(value);
       },
