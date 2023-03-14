@@ -39,13 +39,13 @@
     }
 
     &-primary:disabled {
-        background-color: @ColorFeedbackError20;
-        color: @ColorFeedbackError80;
+        border-color: @ColorSecondaryGrey80;
+        color: @WhiteColor;
     }
 
     &-secondary:disabled {
-        border-color: @ColorSecondaryGrey80;
-        color: @ColorFeedbackError80;
+        background-color: @ColorPrimary20;
+        color: @WhiteColor;
     }
 
     &-tertiary:disabled {
@@ -83,6 +83,11 @@
     padding: 0px 30px;
     border-radius: 3px;
     color: @WhiteColor;
+
+    &:focus {
+        text-decoration: underline;
+        text-underline-position: under;
+    }
 }
 
 //filled button states
@@ -97,6 +102,10 @@
         border-color: @ColorPrimary60;
         background-color: @ColorPrimary60;
     }
+    &[disabled] {
+        opacity: 0.3;
+        color: @WhiteColor;
+      }
 }
 
 .n-flat-button-primary {
@@ -116,6 +125,10 @@
         border-color: @ColorFeedbackSuccess80;
         background-color: @ColorFeedbackSuccess80;
     }
+    &[disabled] {
+        opacity: 0.3;
+        color: @WhiteColor;
+      }
 }
 
 .n-flat-button-destructive {
@@ -131,6 +144,10 @@
         border-color: @ColorFeedbackError80;
         background-color: @ColorFeedbackError80;
     }
+    &[disabled] {
+        opacity: 0.3;
+        color: @WhiteColor;
+      }
 }
 
 //outlined stroke states
@@ -139,6 +156,10 @@
     border-radius: 3px;
     background: @WhiteColor;
 
+    &:focus {
+        text-decoration: underline;
+        text-underline-position: under;
+    }
 }
 
 .n-button-stroke-primary {
@@ -154,6 +175,10 @@
         border-color: @ColorFeedbackSuccess80;
         background-color: @ColorFeedbackSuccess80;
     }
+    &[disabled] {
+        opacity: 0.3;
+        color: @WhiteColor;
+      }
 }
 
 .n-button-stroke-secondary {
@@ -190,12 +215,8 @@
 .n-button-stroke:disabled,
 .n-flat-button:disabled,
 .n-button-rounded:disabled {
-    // opacity: 0.4;
     cursor: not-allowed;
-    pointer-events: none;
-    background-color: @SecondaryDisabledColor;
-    color: @BlackColor;
-    border: 1px solid @SecondaryDisabledColor;
+
 }
 
 .n-button-rounded {
@@ -225,4 +246,9 @@
     font-size: @BaseFontSize + 2;
     line-height: 1.9rem;
     min-width: 3rem;
+}
+
+.n-button-focused {
+    text-decoration: underline;
+    text-underline-position: under;
 }
