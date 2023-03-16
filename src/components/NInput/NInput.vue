@@ -18,7 +18,7 @@
 
     <!-- Input -->
     <span class="nitrozen-loader-div" v-if="loaderShow && search">
-      <img src="./../../assets/loader.gif" />
+      <img :src="getLoader" />
     </span>
 
     <div class="nitrozen-input-grp">
@@ -140,7 +140,7 @@ import NTooltip from './../NTooltip';
 import NitrozenInline from './../NInline';
 import NitrozenUuid from './../../utils/NUuid';
 import NitrozenValidation from './../NValidation';
-
+import { LOADER_CDN_URL } from '../../common/constants'
 export default {
   name: 'nitrozen-input',
   components: {
@@ -159,6 +159,9 @@ export default {
     length: function () {
       return this.value.length;
     },
+    getLoader(){
+      return LOADER_CDN_URL
+    }
   },
   props: {
     autocomplete: {
